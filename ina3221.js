@@ -82,8 +82,19 @@ Ina3221.prototype.init = function (address, busNumber)
 	this.shuntResistor = 0.1 
 	
 	this.wire = i2c.openSync(busNumber)
-}
+	const config =	INA3221_CONFIG_ENABLE_CHAN1 |
+                    INA3221_CONFIG_ENABLE_CHAN2 |
+                    INA3221_CONFIG_ENABLE_CHAN3 |
+                    INA3221_CONFIG_AVG1 |
+                    INA3221_CONFIG_VBUS_CT2 |
+                    INA3221_CONFIG_VSH_CT2 |
+                    INA3221_CONFIG_MODE_2 |
+                    INA3221_CONFIG_MODE_1 |
+                    INA3221_CONFIG_MODE_0
 
+	this.writeRegister((INA3221_REG_CONFIG, config, function(){ this.log('configured')}))
+}
+ 
 
 Ina3221.prototype.enableLogging  = function (enable) 
 {
