@@ -1,14 +1,9 @@
 'use strict'
 /*
- * Node driver for Adafruit INA219 ported from https://github.com/adafruit/Adafruit_INA219
+ * Node driver for INA3221 ported from Brett Marls'port of https://github.com/adafruit/Adafruit_INA219
  */
 var i2c = require('../i2c-bus')	// https://github.com/fivdi/i2c-bus
 
-/**
- * Ina219 is the main class exported from the Node module
- * @class Ina219
- */
-var Ina219 = function() {}
 
 
 /**
@@ -98,7 +93,7 @@ Ina3221.prototype.enableLogging  = function (enable)
 
 /**
   * Reads a 16 bit value over I2C
-  * @param {integer} register - Register to read from (One of INA219_REG_*)
+  * @param {integer} register - Register to read from (One of INA3221_REG_*)
   * @param {integer} value - Value to be written
   * @param {writeRegisterCallback} callback - Callback to be invoked when complete
   */
@@ -115,7 +110,7 @@ Ina3221.prototype.writeRegister  = function (register, value, callback)
 
 /**
   * Reads a 16 bit value over I2C
-  * @param {integer} register - Register to read from (One of INA219_REG_*)
+  * @param {integer} register - Register to read from (One of INA3221_REG_*)
   * @param {onHaveValueCallback} callback - Callback to be invoked when complete
   */
 Ina3221.prototype.readRegister  = function (register, callback) 
